@@ -23,14 +23,14 @@ for i in range(len(data_file_crime)):
     record.append(city[i])
     record.append(zip_code[i])
     record.append(street[i])
-    if crime_date[i] is None:
-        crime_date[i] = ''
+#     if crime_date[i] is None:
+#         crime_date[i] = ''
     record.append(crime_date[i])
-    if crime_time[i] is None:
-        crime_time[i] = ''
+#     if crime_time[i] is None:
+#         crime_time[i] = ''
     record.append(crime_time[i])
-    if add_notes[i] is None:
-        add_notes[i] = ''
+#     if add_notes[i] is None:
+#         add_notes[i] = ''
     record.append(add_notes[i])
     data_array.append(record)
 
