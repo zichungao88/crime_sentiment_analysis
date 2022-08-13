@@ -23,14 +23,14 @@ for i in range(len(data_file_crime)):
     record.append(city[i])
     record.append(zip_code[i])
     record.append(street[i])
-    if crime_date[i] is None:
-        crime_date[i] = ''
+    # if crime_date[i] is None:
+    #     crime_date[i] = ''
     record.append(crime_date[i])
-    if crime_time[i] is None:
-        crime_time[i] = ''
+    # if crime_time[i] is None:
+    #     crime_time[i] = ''
     record.append(crime_time[i])
-    if add_notes[i] is None:
-        add_notes[i] = ''
+    # if add_notes[i] is None:
+    #     add_notes[i] = ''
     record.append(add_notes[i])
     data_array.append(record)
 
@@ -39,7 +39,7 @@ headings = ('Dated Published', 'Crime Category', 'City', 'Zip Code', 'Address', 
 
 @app.route('/')
 def table():
-    return render_template('table.html', headings=headings, data=data_array)
+    return render_template('main.html', headings=headings, data=data_array)
 
 
 @app.route('/about/')
