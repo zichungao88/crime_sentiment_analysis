@@ -37,6 +37,8 @@ for i in range(len(data_file_crime)):
 headings = ('Dated Published', 'Crime Category', 'City', 'Zip Code', 'Address', 'Date Committed', 'Time Committed', 'Additional Notes and References')
 
 graph_crime_type = []
+graph_crime_type_list = []
+simplified_graph_crime_type = []
 # robbery = []
 # residential_burglary = []
 # commercial_burglary = []
@@ -46,7 +48,23 @@ graph_crime_type = []
 # weapon_violation = []
 
 for i in data_array:
-    graph_crime_type.append((i[5], i[1]))
+    graph_crime_type.append(i[1])
+graph_crime_type = set(graph_crime_type)
+
+for i in graph_crime_type:
+    graph_crime_type_list.append(i)
+graph_crime_type_list.sort()
+print(graph_crime_type_list)
+
+for i in range(len(graph_crime_type)):
+    crime_count = 0
+    for j in range(len(data_array)):
+        if graph_crime_type_list[i] == data_array[j][1]:
+            crime_count += 1
+    simplified_graph_crime_type.append((graph_crime_type_list[i], crime_count))
+
+for i in simplified_graph_crime_type:
+    print(i)
 
 
 @app.route('/')
@@ -56,9 +74,9 @@ def table():
 
 @app.route('/graph/')
 def graphs():
-    x_axis = [row[0] for row in graph_crime_type]
-    y_axis = [row[1] for row in graph_crime_type]
-    return render_template('graph.html', x_axis=x_axis, y_axis=y_axis)
+    labels = [row[0] for row in simplified_graph_crime_type]
+    values = [row[1] for row in simplified_graph_crime_type]
+    return render_template('graph.html', labels=labels, values=values)
 
 
 @app.route('/about/')
