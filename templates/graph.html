@@ -2,32 +2,37 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
         <title>Chart by Crime Type</title>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     </head>
     <body>
-        <canvas id="lineChart" width="900" height="400"></canvas>
+        <canvas id="myChart" max-width="100" max-height="100"></canvas>
         <script>
-            var ctx = document.getElementById("lineChart").getContext("2d");
-            var lineChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    x_axis: {{ x_axis | safe }},
-                    datasets: [
-                        {
-                            label: "Crimes",
-                            y_axis: {{ y_axis | safe }},
-                            fill: false,
-                            borderColor: "#4bc0c0",
-                            lineTension: 0.1
-                        }
-                    ]
-                },
-                options: {
-                    responsive: false
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels | safe }},
+                datasets: [{
+                    label: 'Frequency of Committed Crimes',
+                    data: {{ values | safe }},
+                    backgroundColor: '#0022ff',
+            borderWidth: 0
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
-            });
+            }
+        });
         </script>
     </body>
 </html>
