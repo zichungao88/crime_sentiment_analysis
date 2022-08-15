@@ -23,23 +23,42 @@ for i in range(len(data_file_crime)):
     record.append(city[i])
     record.append(zip_code[i])
     record.append(street[i])
-#     if crime_date[i] is None:
-#         crime_date[i] = ''
+    # if crime_date[i] is None:
+    #     crime_date[i] = ''
     record.append(crime_date[i])
-#     if crime_time[i] is None:
-#         crime_time[i] = ''
+    # if crime_time[i] is None:
+    #     crime_time[i] = ''
     record.append(crime_time[i])
-#     if add_notes[i] is None:
-#         add_notes[i] = ''
+    # if add_notes[i] is None:
+    #     add_notes[i] = ''
     record.append(add_notes[i])
     data_array.append(record)
 
 headings = ('Dated Published', 'Crime Category', 'City', 'Zip Code', 'Address', 'Date Committed', 'Time Committed', 'Additional Notes and References')
 
+graph_crime_type = []
+# robbery = []
+# residential_burglary = []
+# commercial_burglary = []
+# vehicle_theft = []
+# vehicle_break_in = []
+# home_invasion_robbery = []
+# weapon_violation = []
+
+for i in data_array:
+    graph_crime_type.append((i[5], i[1]))
+
 
 @app.route('/')
 def table():
-    return render_template('table.html', headings=headings, data=data_array)
+    return render_template('main.html', headings=headings, data=data_array)
+
+
+@app.route('/graph/')
+def graphs():
+    x_axis = [row[0] for row in graph_crime_type]
+    y_axis = [row[1] for row in graph_crime_type]
+    return render_template('graph.html', x_axis=x_axis, y_axis=y_axis)
 
 
 @app.route('/about/')
