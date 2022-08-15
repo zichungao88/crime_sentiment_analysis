@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{% block title %}{% endblock %}</title>
+            <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="/static/styles.css" />
     </head>
     <body>
@@ -39,7 +39,9 @@
             {% endfor %}
         </table>
         <div class="map_title">
-            <h3>The following map shows the locations of at which the crimes were committed.</h3>
+            <h3>
+                The following embedded map shows the locations of the crimes committed. You can zoom into specific locations or click on "View larger map" to view on Google Maps.
+            </h3>
         </div>
         <div class="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d197779.1969970985!2d-77.08230233137797!3d39.236062103961146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c82690abe1981f%3A0x5a8ad4ff03e4d892!2sHoward%20County%2C%20MD!5e0!3m2!1sen!2sus!4v1658792715493!5m2!1sen!2sus" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
