@@ -63,9 +63,6 @@ for i in range(len(graph_crime_type)):
             crime_count += 1
     simplified_graph_crime_type.append((graph_crime_type_list[i], crime_count))
 
-for i in simplified_graph_crime_type:
-    print(i)
-
 
 @app.route('/')
 def table():
@@ -73,10 +70,20 @@ def table():
 
 
 @app.route('/graph/')
-def graphs():
+def graph():
     labels = [row[0] for row in simplified_graph_crime_type]
     values = [row[1] for row in simplified_graph_crime_type]
     return render_template('graph.html', labels=labels, values=values)
+
+
+@app.route('/graph_month/')
+def graph_month():
+    return None
+
+
+@app.route('/graph_crime_type')
+def graph_crime_type():
+    return None
 
 
 @app.route('/about/')
