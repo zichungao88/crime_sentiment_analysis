@@ -1,3 +1,17 @@
+.title {
+    width: fit-content;
+    height: fit-content;
+    border: 8px solid;
+    color: navy;
+    font-family: sans-serif;
+    font-size: 32px;
+    line-height: 80px;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
 .table {
     border-spacing: 0;
     margin: 4rem;
@@ -21,36 +35,39 @@
     border: 2px solid;
 }
 
-.title {
+.map {
     width: fit-content;
     height: fit-content;
-    border: 8px solid;
-    color: navy;
-    font-size: 32px;
-    line-height: 80px;
     margin: auto;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
 }
 
-.map_title {
+.link {
     font-family: sans-serif;
-    font-size: 16px;
-    margin-left: 4rem;
+    color: navy;
+    text-align: center;
 }
 
-.map {
+.image {
+    font-family: sans-serif;
+    width: fit-content;
+    height: fit-content;
     margin: auto;
-    width: 50%;
 }
 
 .description {
+    font-family: sans-serif;
     font-size: 16px;
     margin: auto;
 }
 
 .credits {
+    font-family: sans-serif;
+    font-size: 14px;
+    margin: auto;
+}
+
+.about_me {
+    font-family: sans-serif;
     font-size: 12px;
     margin: auto;
 }

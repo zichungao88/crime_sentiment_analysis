@@ -23,14 +23,8 @@ for i in range(len(data_file_crime)):
     record.append(city[i])
     record.append(zip_code[i])
     record.append(street[i])
-    # if crime_date[i] is None:
-    #     crime_date[i] = ''
     record.append(crime_date[i])
-    # if crime_time[i] is None:
-    #     crime_time[i] = ''
     record.append(crime_time[i])
-    # if add_notes[i] is None:
-    #     add_notes[i] = ''
     record.append(add_notes[i])
     data_array.append(record)
 
@@ -38,14 +32,7 @@ headings = ('Dated Published', 'Crime Category', 'City', 'Zip Code', 'Address', 
 
 graph_crime_type = []
 graph_crime_type_list = []
-simplified_graph_crime_type = []
-# robbery = []
-# residential_burglary = []
-# commercial_burglary = []
-# vehicle_theft = []
-# vehicle_break_in = []
-# home_invasion_robbery = []
-# weapon_violation = []
+simplified_graph = []
 
 for i in data_array:
     graph_crime_type.append(i[1])
@@ -54,36 +41,35 @@ graph_crime_type = set(graph_crime_type)
 for i in graph_crime_type:
     graph_crime_type_list.append(i)
 graph_crime_type_list.sort()
-print(graph_crime_type_list)
 
 for i in range(len(graph_crime_type)):
     crime_count = 0
     for j in range(len(data_array)):
         if graph_crime_type_list[i] == data_array[j][1]:
             crime_count += 1
-    simplified_graph_crime_type.append((graph_crime_type_list[i], crime_count))
+    simplified_graph.append((graph_crime_type_list[i], crime_count))
 
 
 @app.route('/')
-def table():
-    return render_template('main.html', headings=headings, data=data_array)
+def main():
+    return render_template('home.html')
+
+
+@app.route('/chart/')
+def chart():
+    return render_template('chart.html', headings=headings, data=data_array)
 
 
 @app.route('/graph/')
 def graph():
-    labels = [row[0] for row in simplified_graph_crime_type]
-    values = [row[1] for row in simplified_graph_crime_type]
+    labels = [row[0] for row in simplified_graph]
+    values = [row[1] for row in simplified_graph]
     return render_template('graph.html', labels=labels, values=values)
 
 
-@app.route('/graph_month/')
-def graph_month():
-    return None
-
-
-@app.route('/graph_crime_type')
-def graph_crime_type():
-    return None
+@app.route('/map/')
+def maps():
+    return render_template('map.html')
 
 
 @app.route('/about/')
