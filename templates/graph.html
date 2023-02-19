@@ -1,3 +1,5 @@
+<!-- merge conflicts -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,6 +10,7 @@
             integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
+<<<<<<< HEAD
         <title>Graph</title>
         <link rel="stylesheet" href="/static/styles.css" />
     </head>
@@ -17,6 +20,11 @@
             <h1>Crime Data Graph</h1>
             {% endblock %}
         </div>
+=======
+        <title>Chart by Crime Type</title>
+    </head>
+    <body>
+>>>>>>> origin/master
         <canvas id="myChart" max-width="100" max-height="100"></canvas>
         <script>
         const ctx = document.getElementById('myChart').getContext('2d');
@@ -25,7 +33,11 @@
             data: {
                 labels: {{ labels | safe }},
                 datasets: [{
+<<<<<<< HEAD
                     label: 'Frequency of Crimes',
+=======
+                    label: 'Frequency of Committed Crimes',
+>>>>>>> origin/master
                     data: {{ values | safe }},
                     backgroundColor: '#0022ff',
             borderWidth: 0
